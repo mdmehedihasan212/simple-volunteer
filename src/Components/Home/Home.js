@@ -8,12 +8,7 @@ const Home = () => {
     }
 
     const decreaseCount = () => {
-        if (count === 0) {
-            <p>Count Zero</p>
-        }
-        else {
-            setCount(count - 1)
-        }
+        setCount(count - 1)
     }
 
     return (
