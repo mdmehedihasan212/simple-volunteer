@@ -1,7 +1,8 @@
+import React from 'react';
 import useVolunteer from '../../hooks/useVolunteer';
 import Activities from '../Activities/Activities';
 
-const Main = () => {
+const Volunteer = () => {
     const [volunteer, setVolunteer] = useVolunteer();
     return (
         <div>
@@ -15,4 +16,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default Volunteer;
