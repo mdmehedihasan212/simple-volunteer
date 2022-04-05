@@ -1,16 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useVolunteer from '../../hooks/useVolunteer';
 import Activities from '../Activities/Activities';
 import './Main.css';
 
 const Main = () => {
-    const [volunteer] = useVolunteer();
+    // const [volunteer] = useVolunteer();
+    const [searchText, setSearchText] = useState('')
     const [searchResult, setSearchResult] = useState([])
 
+    useEffect(() => {
+        console.log('inside the value');
+        fetch('data.json')
+            .then(res => res.json())
+            .then(data => {
+                const match = data.filter(d => d.title.includes(searchText))
+                setSearchResult(match)
+            })
+    }, [searchText])
+
     const handleToSearch = event => {
-        const searchText = event.target.value;
-        const match = volunteer.filter(v => v.title.includes(searchText));
-        setSearchResult(match);
+        // const searchText = event.target.value;
+        // const match = volunteer.filter(v => v.title.includes(searchText));
+        // setSearchResult(match);
+        setSearchText(event.target.value);
     }
 
     return (
